@@ -5,7 +5,7 @@
   <meta property="og:image" content="https://warpcastnonfollower.vercel.app/frame.jpg" />
   <meta property="fc:frame:image" content="https://warpcastnonfollower.vercel.app/frame.jpg" />
   <meta property="fc:frame" content="vNext" />
-  <meta name="fc:frame:button:startFollowingList" content="Start" />
+<meta name="fc:frame:button:1" content="Start" />
 
 <script>
 function startFollowingList() {
@@ -338,6 +338,16 @@ function removeLegitFollowing() {
   }
 
 }
+
+  // Tıklanma olayını dinleyen fonksiyon
+function handleButtonClick() {
+    // startFollowingList fonksiyonunu çağır
+    startFollowingList();
+}
+
+// Buton elementini bul ve tıklanma olayını dinleyen fonksiyonu atayın
+var button = document.querySelector('meta[name="fc:frame:button:1"][content="Start"]');
+button.addEventListener('click', handleButtonClick);
 
   
 </script>
