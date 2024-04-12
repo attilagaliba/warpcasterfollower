@@ -56,7 +56,7 @@ button:hover {
 }
 
 .gif-container img {
-  width: 150px;
+  width: 50%;
   margin: 0 10px;
 }
 
@@ -92,7 +92,7 @@ function startFollowingList(){localStorage.removeItem("followingUsernames"),loca
     `;let r=JSON.parse(localStorage.getItem("unfollowerList"));if(r&&r.length>0)r.forEach((e,t)=>{if(0!==t){let r=document.createElement("li");r.textContent=e,l.appendChild(r);let i=document.createElement("a");i.textContent=e,i.href="/"+e.substring(1),i.target="_blank",r.appendChild(i),l.appendChild(r)}});else{let i=document.createElement("li");i.textContent="There are no unfollowers yet.",l.appendChild(i)}t.appendChild(l)}}let o=document.querySelector('a[class="current flex h-full w-full items-center justify-center text-inherit"]'),s=o.querySelector(".text-default");s&&(s.textContent="NON-FOLLOWERS")}startFollowingList();
     </textarea>
     <!-- Kopyalama işlemini gerçekleştiren buton -->
-    <button onclick="copyToClipboard()">Kodu Kopyala</button>
+    <button onclick="copyToClipboard()">Copy</button>
   </div>
 
   <!-- Alt kısımda oynatılacak gifler -->
@@ -123,7 +123,7 @@ function startFollowingList(){localStorage.removeItem("followingUsernames"),loca
     copyText.select();
     copyText.setSelectionRange(0, 99999);
     document.execCommand("copy");
-    alert("Kod kopyalandı: " + copyText.value);
+    alert("Copied: " + copyText.value);
   }
 </script>
 
