@@ -5,19 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yönlendirme ve Konsol Mesajı</title>
 <script>
-  // Sayfa yüklendiğinde yapılacak işlemler
+  // Yönlendirildiğimiz sayfa tamamen yüklendiğinde yapılacak işlemler
   window.onload = function() {
-    // Belirli bir adrese yönlendirme
-    window.location.href = "https://warpcast.com/attilagaliba/following";
-  };
-  
-  // Belirli bir adres yüklendiğinde yapılacak işlemler
-  window.onload = function() {
-    // Eğer URL belirtilen adres ise konsola mesaj yazdırma
+    // Yönlendirildiğimiz sayfanın URL'sini kontrol etme
     if(window.location.href === "https://warpcast.com/attilagaliba/following") {
       console.log("sa");
     }
   };
+
+  // Sayfa yüklendiğinde yapılacak işlemler
+  window.addEventListener('DOMContentLoaded', (event) => {
+    // Belirli bir adrese yönlendirme
+    window.location.href = "https://warpcast.com/attilagaliba/following";
+  });
 </script>
 </head>
 <body>
