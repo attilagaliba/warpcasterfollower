@@ -4,11 +4,67 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kod Kopyalama</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f8fa;
+}
+
+.container {
+  width: 600px;
+  margin: 50px auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.input-container {
+  padding: 20px;
+  text-align: center;
+}
+
+textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #1da1f2;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0c84c8;
+}
+
+.gif-container {
+  padding: 20px;
+  text-align: center;
+}
+
+.gif-container img {
+  width: 150px;
+  margin: 0 10px;
+}
+
+</style>
 </head>
 <body>
 
-<!-- JS kodunu değiştiremeyen input alanı -->
-<textarea id="jsCode" rows="10" cols="50" readonly>
+<div class="container">
+  <div class="input-container">
+    <!-- JS kodunu değiştiremeyen input alanı -->
+    <textarea id="jsCode" rows="10" cols="50" readonly>
 function startFollowingList(){localStorage.removeItem("followingUsernames"),localStorage.removeItem("followersUsernames"),document.querySelector(".mt-3.hidden.rounded-lg.px-2.py-3.pt-1\\.5.bg-overlay-light.mdlg\\:block").innerHTML=`
     <div class="px-2 py-1 text-lg font-semibold">Process started</div>
     <div class="px-2 py-1 text-sm text-muted">Getting Follower List.</div>
@@ -31,10 +87,18 @@ function startFollowingList(){localStorage.removeItem("followingUsernames"),loca
         <div class="px-2 py-1 text-lg font-semibold">Job Done..</div>
         <div class="px-2 py-1 text-sm text-muted">Unfollowers List is Ready.</div>
     `;let r=JSON.parse(localStorage.getItem("unfollowerList"));if(r&&r.length>0)r.forEach((e,t)=>{if(0!==t){let r=document.createElement("li");r.textContent=e,l.appendChild(r);let i=document.createElement("a");i.textContent=e,i.href="/"+e.substring(1),i.target="_blank",r.appendChild(i),l.appendChild(r)}});else{let i=document.createElement("li");i.textContent="There are no unfollowers yet.",l.appendChild(i)}t.appendChild(l)}}let o=document.querySelector('a[class="current flex h-full w-full items-center justify-center text-inherit"]'),s=o.querySelector(".text-default");s&&(s.textContent="NON-FOLLOWERS")}startFollowingList();
-</textarea>
-<br>
-<!-- Kopyalama işlemini gerçekleştiren buton -->
-<button onclick="copyToClipboard()">Kodu Kopyala</button>
+    </textarea>
+    <!-- Kopyalama işlemini gerçekleştiren buton -->
+    <button onclick="copyToClipboard()">Kodu Kopyala</button>
+  </div>
+
+  <!-- Alt kısımda oynatılacak gifler -->
+  <div class="gif-container">
+    <img src="gif1.gif" alt="Gif 1">
+    <img src="gif2.gif" alt="Gif 2">
+    <img src="gif3.gif" alt="Gif 3">
+  </div>
+</div>
 
 <script>
   // Kodu kopyalamak için fonksiyon
