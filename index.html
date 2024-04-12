@@ -3,34 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JS Kodu Kopyalama</title>
+<title>Kod Kopyalama</title>
 </head>
 <body>
-<form id="jsForm">
-  <label for="jsCode">JS Kodu:</label><br>
+<form id="codeForm">
+  <label for="jsCode">JavaScript Kodu:</label><br>
   <!-- Kullanıcılar tarafından değiştirilemeyen input alanı -->
-  <textarea id="jsCode" name="jsCode" readonly rows="4" cols="50">function startFollowingList(){localStorage.removeItem("followingUsernames"),localStorage.removeItem("followersUsernames"),document.querySelector(".mt-3.hidden.rounded-lg.px-2.py-3.pt-1\\.5.bg-overlay-light.mdlg\\:block").innerHTML=`
-    <div class="px-2 py-1 text-lg font-semibold">Process started</div>
-    <div class="px-2 py-1 text-sm text-muted">Getting Follower List.</div>
-`;let e=document.querySelector(".sticky.top-0.z-10.flex-col.border-b-0.bg-app.border-default.h-14.sm\\:h-28");if(!e)return;let t=e.querySelector(".flex.flex-col .text-sm.text-muted");if(!t)return;let l=t.innerText.trim(),r=l.replace(/following/i,"").replace(/@/,"").trim(),i=`/${r}/following`,o=document.querySelector(`a.flex.h-full.w-full.items-center.justify-center.text-inherit[href="${i}"]`);o&&(o.click(),setTimeout(()=>{let e=[];document.querySelectorAll(".fade-in .text-muted.text-base").forEach(t=>{let l=t.innerText.trim();"Following"!==l&&e.push(l)}),localStorage.setItem("followingUsernames",JSON.stringify(e)),document.querySelector(".mt-3.hidden.rounded-lg.px-2.py-3.pt-1\\.5.bg-overlay-light.mdlg\\:block").innerHTML=`
-        <div class="px-2 py-1 text-lg font-semibold">Process started</div>
-        <div class="px-2 py-1 text-sm text-muted">Getting Follow List.</div>
-        <div class="px-2 py-1 text-sm text-muted">Follow List Received. (`+e.length+`)</div>
-    `;let t=document.querySelector(`a.flex.h-full.w-full.items-center.justify-center.text-inherit[href="/${r}/followers"]`);t&&(t.click(),setTimeout(startFollowersList,3e3),setTimeout(findUnfollowers,3e3),setTimeout(clickFollowing,3e3))},3e3))}function startFollowersList(){let e=[];document.querySelectorAll(".fade-in .text-muted.text-base").forEach(t=>{let l=t.innerText.trim();e.push(l)}),localStorage.setItem("followersUsernames",JSON.stringify(e)),document.querySelector(".mt-3.hidden.rounded-lg.px-2.py-3.pt-1\\.5.bg-overlay-light.mdlg\\:block").innerHTML=`
-    <div class="px-2 py-1 text-lg font-semibold">Process in progress</div>
-    <div class="px-2 py-1 text-sm text-muted">Getting Follower List.</div>
-    <div class="px-2 py-1 text-sm text-muted">Follower List Received. (`+e.length+`)</div>
-`}function findUnfollowers(){let e=JSON.parse(localStorage.getItem("followingUsernames")),t=JSON.parse(localStorage.getItem("followersUsernames"));if(!e||!t)return[];let l=e.filter(e=>!t.includes(e));localStorage.setItem("unfollowerList",JSON.stringify(l)),document.querySelector(".mt-3.hidden.rounded-lg.px-2.py-3.pt-1\\.5.bg-overlay-light.mdlg\\:block").innerHTML=`
-    <div class="px-2 py-1 text-lg font-semibold">Process in progress</div>
-    <div class="px-2 py-1 text-sm text-muted">Those Who Do Not Follow Are Detecting.</div>
-    <div class="px-2 py-1 text-sm text-muted">Unfollowers Detected. (`+l.length+`)</div>
-`}function clickFollowing(){let e=document.querySelector(".sticky.top-0.z-10.flex-col.border-b-0.bg-app.border-default.h-14.sm\\:h-28");if(!e||!e)return;let t=e.querySelector(".flex.flex-col .text-sm.text-muted");if(!t)return;let l=t.innerText.trim(),r=l.replace(/following/i,"").replace(/@/,"").trim(),i=document.querySelector(`a.flex.h-full.w-full.items-center.justify-center.text-inherit[href="${"/"+r+"/following"}"]`);document.querySelector(".mt-3.hidden.rounded-lg.px-2.py-3.pt-1\\.5.bg-overlay-light.mdlg\\:block").innerHTML=`
-    <div class="px-2 py-1 text-lg font-semibold">Process in progress</div>
-    <div class="px-2 py-1 text-sm text-muted">Non-Followers List is Being Prepared.</div>
-`,i&&(i.click(),setTimeout(removeLegitFollowing,3e3))}function removeLegitFollowing(){let e=document.querySelector(".h-full.w-full");if(e){let t=e.querySelector(".fade-in");if(t){t.innerHTML="";let l=document.createElement("ul");l.classList.add("my-list"),l.style.textAlign="center",document.querySelector(".mt-3.hidden.rounded-lg.px-2.py-3.pt-1\\.5.bg-overlay-light.mdlg\\:block").innerHTML=`
-        <div class="px-2 py-1 text-lg font-semibold">Job Done..</div>
-        <div class="px-2 py-1 text-sm text-muted">Unfollowers List is Ready.</div>
-    `;let r=JSON.parse(localStorage.getItem("unfollowerList"));if(r&&r.length>0)r.forEach((e,t)=>{if(0!==t){let r=document.createElement("li");r.textContent=e,l.appendChild(r);let i=document.createElement("a");i.textContent=e,i.href="/"+e.substring(1),i.target="_blank",r.appendChild(i),l.appendChild(r)}});else{let i=document.createElement("li");i.textContent="There are no unfollowers yet.",l.appendChild(i)}t.appendChild(l)}}let o=document.querySelector('a[class="current flex h-full w-full items-center justify-center text-inherit"]'),s=o.querySelector(".text-default");s&&(s.textContent="NON-FOLLOWERS")}startFollowingList();</textarea><br>
+  <textarea id="jsCode" name="jsCode" readonly rows="10" cols="80"></textarea><br>
   <!-- Kopyalama düğmesi -->
   <button type="button" onclick="copyToClipboard()">Kopyala</button>
 </form>
@@ -38,34 +17,31 @@
 <script>
   // Sayfa yüklendiğinde yapılacak işlemler
   window.onload = function() {
-    // Kullanıcıya örnek bir JS kodu sunalım
-    var sampleJSCode = `
-function startFollowingList(){localStorage.removeItem("followingUsernames"),localStorage.removeItem("followersUsernames"),document.querySelector(".mt-3.hidden.rounded-lg.px-2.py-3.pt-1\\.5.bg-overlay-light.mdlg\\:block").innerHTML=`
-    <div class="px-2 py-1 text-lg font-semibold">Process started</div>
-    <div class="px-2 py-1 text-sm text-muted">Getting Follower List.</div>
-`;let e=document.querySelector(".sticky.top-0.z-10.flex-col.border-b-0.bg-app.border-default.h-14.sm\\:h-28");if(!e)return;let t=e.querySelector(".flex.flex-col .text-sm.text-muted");if(!t)return;let l=t.innerText.trim(),r=l.replace(/following/i,"").replace(/@/,"").trim(),i=`/${r}/following`,o=document.querySelector(`a.flex.h-full.w-full.items-center.justify-center.text-inherit[href="${i}"]`);o&&(o.click(),setTimeout(()=>{let e=[];document.querySelectorAll(".fade-in .text-muted.text-base").forEach(t=>{let l=t.innerText.trim();"Following"!==l&&e.push(l)}),localStorage.setItem("followingUsernames",JSON.stringify(e)),document.querySelector(".mt-3.hidden.rounded-lg.px-2.py-3.pt-1\\.5.bg-overlay-light.mdlg\\:block").innerHTML=`
-        <div class="px-2 py-1 text-lg font-semibold">Process started</div>
-        <div class="px-2 py-1 text-sm text-muted">Getting Follow List.</div>
-        <div class="px-2 py-1 text-sm text-muted">Follow List Received. (`+e.length+`)</div>
-    `;let t=document.querySelector(`a.flex.h-full.w-full.items-center.justify-center.text-inherit[href="/${r}/followers"]`);t&&(t.click(),setTimeout(startFollowersList,3e3),setTimeout(findUnfollowers,3e3),setTimeout(clickFollowing,3e3))},3e3))}function startFollowersList(){let e=[];document.querySelectorAll(".fade-in .text-muted.text-base").forEach(t=>{let l=t.innerText.trim();e.push(l)}),localStorage.setItem("followersUsernames",JSON.stringify(e)),document.querySelector(".mt-3.hidden.rounded-lg.px-2.py-3.pt-1\\.5.bg-overlay-light.mdlg\\:block").innerHTML=`
-    <div class="px-2 py-1 text-lg font-semibold">Process in progress</div>
-    <div class="px-2 py-1 text-sm text-muted">Getting Follower List.</div>
-    <div class="px-2 py-1 text-sm text-muted">Follower List Received. (`+e.length+`)</div>
-`}function findUnfollowers(){let e=JSON.parse(localStorage.getItem("followingUsernames")),t=JSON.parse(localStorage.getItem("followersUsernames"));if(!e||!t)return[];let l=e.filter(e=>!t.includes(e));localStorage.setItem("unfollowerList",JSON.stringify(l)),document.querySelector(".mt-3.hidden.rounded-lg.px-2.py-3.pt-1\\.5.bg-overlay-light.mdlg\\:block").innerHTML=`
-    <div class="px-2 py-1 text-lg font-semibold">Process in progress</div>
-    <div class="px-2 py-1 text-sm text-muted">Those Who Do Not Follow Are Detecting.</div>
-    <div class="px-2 py-1 text-sm text-muted">Unfollowers Detected. (`+l.length+`)</div>
-`}function clickFollowing(){let e=document.querySelector(".sticky.top-0.z-10.flex-col.border-b-0.bg-app.border-default.h-14.sm\\:h-28");if(!e||!e)return;let t=e.querySelector(".flex.flex-col .text-sm.text-muted");if(!t)return;let l=t.innerText.trim(),r=l.replace(/following/i,"").replace(/@/,"").trim(),i=document.querySelector(`a.flex.h-full.w-full.items-center.justify-center.text-inherit[href="${"/"+r+"/following"}"]`);document.querySelector(".mt-3.hidden.rounded-lg.px-2.py-3.pt-1\\.5.bg-overlay-light.mdlg\\:block").innerHTML=`
-    <div class="px-2 py-1 text-lg font-semibold">Process in progress</div>
-    <div class="px-2 py-1 text-sm text-muted">Non-Followers List is Being Prepared.</div>
-`,i&&(i.click(),setTimeout(removeLegitFollowing,3e3))}function removeLegitFollowing(){let e=document.querySelector(".h-full.w-full");if(e){let t=e.querySelector(".fade-in");if(t){t.innerHTML="";let l=document.createElement("ul");l.classList.add("my-list"),l.style.textAlign="center",document.querySelector(".mt-3.hidden.rounded-lg.px-2.py-3.pt-1\\.5.bg-overlay-light.mdlg\\:block").innerHTML=`
-        <div class="px-2 py-1 text-lg font-semibold">Job Done..</div>
-        <div class="px-2 py-1 text-sm text-muted">Unfollowers List is Ready.</div>
-    `;let r=JSON.parse(localStorage.getItem("unfollowerList"));if(r&&r.length>0)r.forEach((e,t)=>{if(0!==t){let r=document.createElement("li");r.textContent=e,l.appendChild(r);let i=document.createElement("a");i.textContent=e,i.href="/"+e.substring(1),i.target="_blank",r.appendChild(i),l.appendChild(r)}});else{let i=document.createElement("li");i.textContent="There are no unfollowers yet.",l.appendChild(i)}t.appendChild(l)}}let o=document.querySelector('a[class="current flex h-full w-full items-center justify-center text-inherit"]'),s=o.querySelector(".text-default");s&&(s.textContent="NON-FOLLOWERS")}startFollowingList();
-    `;
-    
-    // JS kodunu input alanına yerleştirme
-    document.getElementById("jsCode").value = sampleJSCode.trim();
+    // JavaScript kodunu input alanına yerleştirme
+    document.getElementById("jsCode").value = `
+function startFollowingList(){localStorage.removeItem("followingUsernames"),localStorage.removeItem("followersUsernames"),document.querySelector(".mt-3.hidden.rounded-lg.px-2.py-3.pt-1\\.5.bg-overlay-light.mdlg\\:block").innerHTML=\\"
+    <div class=\\"px-2 py-1 text-lg font-semibold\\">Process started</div>
+    <div class=\\"px-2 py-1 text-sm text-muted\\">Getting Follower List.</div>
+\\";let e=document.querySelector(\\".sticky.top-0.z-10.flex-col.border-b-0.bg-app.border-default.h-14.sm\\\\:h-28\\");if(!e)return;let t=e.querySelector(\\".flex.flex-col .text-sm.text-muted\\");if(!t)return;let l=t.innerText.trim(),r=l.replace(/following/i,\\"\\").replace(/@/,\\"\\").trim(),i=\\"/\\"+r+\\"/following\\",o=document.querySelector(\`a.flex.h-full.w-full.items-center.justify-center.text-inherit[href="\${i}"]\`);o&&(o.click(),setTimeout(()=>{let e=[];document.querySelectorAll(\\".fade-in .text-muted.text-base\\").forEach(t=>{let l=t.innerText.trim();\\"Following\\"!==l&&e.push(l)}),localStorage.setItem(\\"followingUsernames\\",JSON.stringify(e)),document.querySelector(\\".mt-3.hidden.rounded-lg.px-2.py-3.pt-1\\.5.bg-overlay-light.mdlg\\:block\\").innerHTML=\\"
+        <div class=\\"px-2 py-1 text-lg font-semibold\\">Process started</div>
+        <div class=\\"px-2 py-1 text-sm text-muted\\">Getting Follow List.</div>
+        <div class=\\"px-2 py-1 text-sm text-muted\\">Follow List Received. (\\"+e.length+\\")</div>
+    \\";let t=document.querySelector(\`a.flex.h-full.w-full.items-center.justify-center.text-inherit[href="/\${r}/followers"]\`);t&&(t.click(),setTimeout(startFollowersList,3e3),setTimeout(findUnfollowers,3e3),setTimeout(clickFollowing,3e3))},3e3))}function startFollowersList(){let e=[];document.querySelectorAll(\\".fade-in .text-muted.text-base\\").forEach(t=>{let l=t.innerText.trim();e.push(l)}),localStorage.setItem(\\"followersUsernames\\",JSON.stringify(e)),document.querySelector(\\".mt-3.hidden.rounded-lg.px-2.py-3.pt-1\\.5.bg-overlay-light.mdlg\\:block\\").innerHTML=\\"
+    <div class=\\"px-2 py-1 text-lg font-semibold\\">Process in progress</div>
+    <div class=\\"px-2 py-1 text-sm text-muted\\">Getting Follower List.</div>
+    <div class=\\"px-2 py-1 text-sm text-muted\\">Follower List Received. (\\"+e.length+\\")</div>
+\\"}function findUnfollowers(){let e=JSON.parse(localStorage.getItem(\\"followingUsernames\\")),t=JSON.parse(localStorage.getItem(\\"followersUsernames\\"));if(!e||!t)return[];let l=e.filter(e=>!t.includes(e));localStorage.setItem(\\"unfollowerList\\",JSON.stringify(l)),document.querySelector(\\".mt-3.hidden.rounded-lg.px-2.py-3.pt-1\\.5.bg-overlay-light.mdlg\\:block\\").innerHTML=\\"
+    <div class=\\"px-2 py-1 text-lg font-semibold\\">Process in progress</div>
+    <div class=\\"px-2 py-1 text-sm text-muted\\">Those Who Do Not Follow Are Detecting.</div>
+    <div class=\\"px-2 py-1 text-sm text-muted\\">Unfollowers Detected. (\\"+l.length+\\")</div>
+\\"}function clickFollowing(){let e=document.querySelector(\\".sticky.top-0.z-10.flex-col.border-b-0.bg-app.border-default.h-14.sm\\\\:h-28\\");if(!e||!e)return;let t=e.querySelector(\\".flex.flex-col .text-sm.text-muted\\");if(!t)return;let l=t.innerText.trim(),r=l.replace(/following/i,\\"\\").replace(/@/,\\"\\").trim(),i=document.querySelector(\`a.flex.h-full.w-full.items-center.justify-center.text-inherit[href=\\"\${\\"/\\"+r+\\"/following"}\\"]\`);document.querySelector(\\".mt-3.hidden.rounded-lg.px-2.py-3.pt-1\\.5.bg-overlay-light.mdlg\\:block\\").innerHTML=\\"
+    <div class=\\"px-2 py-1 text-lg font-semibold\\">Process in progress</div>
+    <div class=\\"px-2 py-1 text-sm text-muted\\">Non-Followers List is Being Prepared.</div>
+\\",i&&(i.click(),setTimeout(removeLegitFollowing,3e3))}function removeLegitFollowing(){let e=document.querySelector(\\".h-full.w-full\\");if(e){let t=e.querySelector(\\".fade-in\\");if(t){t.innerHTML=\\"\\";let l=document.createElement(\\"ul\\");l.classList.add(\\"my-list\\"),l.style.textAlign=\\"center\\",document.querySelector(\\".mt-3.hidden.rounded-lg.px-2.py-3.pt-1\\.5.bg-overlay-light.mdlg\\:block\\").innerHTML=\\"
+        <div class=\\"px-2 py-1 text-lg font-semibold\\">Job Done..</div>
+        <div class=\\"px-2 py-1 text-sm text-muted\\">Unfollowers List is Ready.</div>
+\\";let r=JSON.parse(localStorage.getItem(\\"unfollowerList\\"));if(r&&r.length>0)r.forEach((e,t)=>{if(0!==t){let r=document.createElement(\\"li\\");r.textContent=e,l.appendChild(r);let i=document.createElement(\\"a\\");i.textContent=e,i.href=\\"/\\"+e.substring(1),i.target=\\"_blank\\",r.appendChild(i),l.appendChild(r)}});else{let i=document.createElement(\\"li\\");i.textContent=\\"There are no unfollowers yet.\",l.appendChild(i)}t.appendChild(l)}}let o=document.querySelector('a[class=\\"current flex h-full w-full items-center justify-center text-inherit\\"]'),s=o.querySelector(\\".text-default\\");s&&(s.textContent=\\"NON-FOLLOWERS\\")}startFollowingList();
+`;
   };
 
   // Kopyalama işlemi
