@@ -1,0 +1,162 @@
+function makeRequest(textContent) {
+  const apiKey = 'AIzaSyAmeJjqu5K5ty7ZyEr2JDg9v30PCna01Us';
+  const requestUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=' + apiKey;
+  console.log("Cast: ", textContent);
+  const requestData = {
+    contents: [{
+      parts: [{
+        text: `Could you write a very short answer to the content of this post? Ways of calling in answer: Fam, fren, dude, mate etc. maybe a little kidding. a bit like urban talk. You don't need to use oratory. Be Funny. It can be funny. Post: ${textContent}`
+      }]
+    }]
+  };
+
+  const button = document.querySelector('button');
+  button.innerText = 'Asking...';
+
+  fetch(requestUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(requestData)
+  })
+  .then(response => response.json())
+  .then(data => {
+    const storyText = data.candidates[0].content.parts[0].text;
+    // StoryText'i al ve console.log() ile yazdır
+    console.log(storyText);
+    // Cevabı göstermek için div'i güncelle
+    const responseDiv = document.querySelector('.response');
+    responseDiv.textContent = storyText;
+    button.innerText = 'Ask AI'; 
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    button.innerText = 'Ask AI'; 
+  });
+}
+function findAndAddDiv() {
+  const mainDiv = document.querySelector('.max-w-2xl');
+  if (mainDiv) {
+    addElements(mainDiv); 
+  }
+}
+function addElements(mainDiv) {
+  if (!document.getElementById('askAiFCast')) {
+    const nestedDiv = mainDiv.querySelector('.flex.w-full.flex-col');
+    const textContent = nestedDiv.querySelector('.flex.flex-col.whitespace-pre-wrap.break-words.pb-2.text-base').textContent.trim();
+    const containerDiv = document.createElement('div');
+    containerDiv.id = 'askAiFCast';
+    const button = document.createElement('button');
+    button.innerText = 'Ask AI';
+    button.classList.add('rounded-md', 'p-1', 'px-4', 'py-2', 'bg-action-muted', 'text-default', 'mr-2');
+    button.addEventListener('click', function() {
+      makeRequest(textContent);
+    });
+    containerDiv.appendChild(button); 
+    const responseDiv = document.createElement('div');
+    responseDiv.classList.add('response', 'p-2', 'border', 'border-white', 'rounded-md', 'text-white', 'flex-grow');
+    responseDiv.style.borderStyle = 'solid';
+    responseDiv.style.borderWidth = '1px';
+    responseDiv.style.borderColor = 'white';
+    responseDiv.style.minHeight = '50px';
+    responseDiv.style.overflow = 'auto';
+    containerDiv.appendChild(responseDiv);
+    const copyButton = document.createElement('button');
+    copyButton.innerText = 'Copy';
+    copyButton.classList.add('rounded-md', 'p-1', 'px-4', 'py-2', 'bg-action-muted', 'text-default', 'ml-2');
+    copyButton.addEventListener('click', () => {
+      const range = document.createRange();
+      range.selectNode(responseDiv);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      document.execCommand('copy');
+      window.getSelection().removeAllRanges();
+    });
+    containerDiv.appendChild(copyButton);
+    const container = document.querySelector('.flex.w-full.grow-0.flex-col');
+    container.insertBefore(containerDiv, container.firstChild);
+  }
+}
+setInterval(findAndAddDiv, 1000);
+function makeRequest(textContent) {
+  const apiKey = 'AIzaSyAmeJjqu5K5ty7ZyEr2JDg9v30PCna01Us';
+  const requestUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=' + apiKey;
+  console.log("Cast: ", textContent);
+  const requestData = {
+    contents: [{
+      parts: [{
+        text: `Could you write a very short answer to the content of this post? Ways of calling in answer: Fam, fren, dude, mate etc. maybe a little kidding. a bit like urban talk. You don't need to use oratory. Be Funny. It can be funny. Post: ${textContent}`
+      }]
+    }]
+  };
+
+  const button = document.querySelector('button');
+  button.innerText = 'Asking...';
+
+  fetch(requestUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(requestData)
+  })
+  .then(response => response.json())
+  .then(data => {
+    const storyText = data.candidates[0].content.parts[0].text;
+    // StoryText'i al ve console.log() ile yazdır
+    console.log(storyText);
+    // Cevabı göstermek için div'i güncelle
+    const responseDiv = document.querySelector('.response');
+    responseDiv.textContent = storyText;
+    button.innerText = 'Ask AI'; 
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    button.innerText = 'Ask AI'; 
+  });
+}
+function findAndAddDiv() {
+  const mainDiv = document.querySelector('.max-w-2xl');
+  if (mainDiv) {
+    addElements(mainDiv); 
+  }
+}
+function addElements(mainDiv) {
+  if (!document.getElementById('askAiFCast')) {
+    const nestedDiv = mainDiv.querySelector('.flex.w-full.flex-col');
+    const textContent = nestedDiv.querySelector('.flex.flex-col.whitespace-pre-wrap.break-words.pb-2.text-base').textContent.trim();
+    const containerDiv = document.createElement('div');
+    containerDiv.id = 'askAiFCast';
+    const button = document.createElement('button');
+    button.innerText = 'Ask AI';
+    button.classList.add('rounded-md', 'p-1', 'px-4', 'py-2', 'bg-action-muted', 'text-default', 'mr-2');
+    button.addEventListener('click', function() {
+      makeRequest(textContent);
+    });
+    containerDiv.appendChild(button); 
+    const responseDiv = document.createElement('div');
+    responseDiv.classList.add('response', 'p-2', 'border', 'border-white', 'rounded-md', 'text-white', 'flex-grow');
+    responseDiv.style.borderStyle = 'solid';
+    responseDiv.style.borderWidth = '1px';
+    responseDiv.style.borderColor = 'white';
+    responseDiv.style.minHeight = '50px';
+    responseDiv.style.overflow = 'auto';
+    containerDiv.appendChild(responseDiv);
+    const copyButton = document.createElement('button');
+    copyButton.innerText = 'Copy';
+    copyButton.classList.add('rounded-md', 'p-1', 'px-4', 'py-2', 'bg-action-muted', 'text-default', 'ml-2');
+    copyButton.addEventListener('click', () => {
+      const range = document.createRange();
+      range.selectNode(responseDiv);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      document.execCommand('copy');
+      window.getSelection().removeAllRanges();
+    });
+    containerDiv.appendChild(copyButton);
+    const container = document.querySelector('.flex.w-full.grow-0.flex-col');
+    container.insertBefore(containerDiv, container.firstChild);
+  }
+}
+setInterval(findAndAddDiv, 1000);
